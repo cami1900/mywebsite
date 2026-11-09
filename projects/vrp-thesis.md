@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_label: Route Re-optimization
 title: Route Re-optimization for Waste Collection
 description: Master's thesis on keeping waste-collection routes familiar to drivers while re-optimizing them for fluctuating demand.
 hide_title: true
