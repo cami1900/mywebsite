@@ -87,7 +87,6 @@ export default function Home() {
               const current = (tick + i) % l.words.length;
               return (
                 <article key={l.code} className={styles.lang} style={{ '--i': i }}>
-                  <span className={styles.code} aria-hidden="true">{l.code}</span>
                   <span className={styles.words} aria-label={l.words[0]}>
                     {l.words.map((w, j) => (
                       <span
