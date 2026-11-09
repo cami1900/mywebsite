@@ -1,26 +1,50 @@
 ---
 sidebar_position: 1
 title: Route Re-optimization for Waste Collection
+description: Master's thesis on keeping waste-collection routes familiar to drivers while re-optimizing them for fluctuating demand.
+hide_title: true
+hide_table_of_contents: true
 ---
 
-# Route Re-optimization for Waste Collection
+import {
+  ThesisHero, KeyNumbers, Section, Approach, Objective,
+  Metrics, TradeoffChart, Findings, Closing,
+} from '@site/src/components/Thesis';
 
-**Tech:** Python, metaheuristics, operations research · **Where:** University of Vienna (Master's research thesis) · **When:** 04.2025 – 09.2025
+<ThesisHero />
 
-## The question
-*When waste volumes fluctuate, is the shortest route still the most efficient one?*
+<KeyNumbers />
 
-Waste collection runs on fixed periodic routes that drivers know well. When volumes change unexpectedly, the routes have to be rebuilt. The shortest new route can be very different from the usual one, which makes it harder to carry out in practice.
+<Section label="The problem" title="The shortest route isn't always the fastest one to drive">
 
-## What I did
-- **Optimization model:** formulated a multi-objective function for the periodic Vehicle Routing Problem (PVRP) that rebuilds routes after a disruption, balancing distance minimization against similarity to the daily routes.
-- **Methodology:** defined and compared three route similarity measures.
-- **Implementation:** wrote a metaheuristic algorithm in Python to solve the model and find the most effective similarity measure.
+Waste trucks follow fixed periodic routes that drivers and collectors know well. When volumes change (holidays, summer tourism, a snow day), the obvious fix is to re-optimize for distance. The result can look nothing like the usual route, though, and practitioners told us that unfamiliar streets and bins make driving and service slower.
 
-## Results
-Using the best similarity measure with weights of **0.75 (distance)** and **0.25 (similarity)**, the solution:
+**My goal:** rebuild routes after a demand change so they stay short *and* as close as possible to the routes crews already know.
 
-- cut total distance by **1.3%** compared with the distance-only solution, and
-- increased similarity to the daily routes by **6.6%**.
+</Section>
 
-So you don't have to choose between efficient routes and familiar ones: a weighted approach improves both.
+<Section label="Approach" title="Three steps from disruption to a balanced plan">
+
+<Approach />
+
+<Objective />
+
+</Section>
+
+<Section label="Defining &ldquo;familiar&rdquo;" title="Three ways to measure how similar two routes are">
+
+Route similarity depends on who you ask, so I defined and compared three measures. Each scores from 0 to 1 against the usual plan, and the solution is scored by its *least* consistent vehicle.
+
+<Metrics />
+
+</Section>
+
+<Section label="Results" title="A small weight on consistency gives better routes overall">
+
+<TradeoffChart />
+
+<Findings />
+
+</Section>
+
+<Closing />
