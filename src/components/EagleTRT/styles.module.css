@@ -1,0 +1,374 @@
+/* E-Agle TRT page — follows the site tokens in src/css/custom.css (light + dark),
+   same rhythm as the Thesis and ManualPages components. */
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem 0 3rem;
+  border-bottom: 1px solid var(--rule);
+}
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+}
+.title em { color: var(--accent); }
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 32rem;
+  margin: 0 0 1.75rem;
+}
+.quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.35;
+  max-width: 32rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--accent);
+  margin: 0 0 2.25rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 2rem;
+}
+.meta { font-size: 0.8rem; line-height: 1.6; color: var(--muted); }
+
+/* Hero car: a render that "drives in", with speed lines behind it */
+.heroCar {
+  position: relative;
+  margin: 0;
+  animation: driveIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.speed {
+  position: absolute;
+  inset: 22% 30% 22% -12%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 14px,
+    color-mix(in srgb, var(--accent) 35%, transparent) 14px 16px
+  );
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 70%);
+  mask-image: linear-gradient(to right, transparent, #000 70%);
+  animation: speedFade 1.2s ease-out 0.2s both;
+}
+.heroImg {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 18px;
+}
+.heroImg img,
+.carImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply; /* the renders sit on white: blend them into the page */
+}
+.heroImg img { transform: scale(1.25); }
+.heroCar figcaption {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@keyframes driveIn {
+  from { opacity: 0; transform: translateX(-2.5rem); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes speedFade {
+  from { opacity: 0; transform: translateX(3rem); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroCar, .speed { animation: none; }
+}
+
+/* ---------- Button ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.button:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.button svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Key numbers ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--rule);
+}
+.stat { display: flex; flex-direction: column; padding: 2rem 1rem 2rem 0; }
+.stat + .stat { padding-left: 1.25rem; border-left: 1px solid var(--rule); }
+.statValue {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+  font-variant-numeric: tabular-nums;
+}
+.statLabel { font-weight: 500; font-size: 0.95rem; }
+.statNote { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+/* ---------- Sections ---------- */
+.section { padding: 3.5rem 0 0.5rem; }
+.h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+  max-width: 34rem;
+}
+.section > p:not(.eyebrow) { max-width: 40rem; }
+
+/* ---------- Divisions ---------- */
+.divisions {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.divisions li {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.divisions li.mine {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+.mine small {
+  margin-left: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  right: 0;
+  top: 0.45rem;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--rule));
+}
+.timeline li { position: relative; margin: 0; padding-top: 2rem; }
+.timeline li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+.timeline li:nth-child(2)::before { background: var(--accent); }
+.when {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+}
+.timeline h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin: 0.35rem 0 0.45rem;
+}
+.timeline p { font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+/* ---------- Roles ---------- */
+.roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+.role {
+  padding: 1.4rem 1.25rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.role:hover { border-color: var(--accent); transform: translateY(-3px); }
+.icon {
+  width: 2rem;
+  height: 2rem;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 0.9rem;
+}
+.role h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 0 0 0.4rem;
+}
+.role p { font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+.audiences {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+}
+.audLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 0.4rem;
+}
+.chip {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg));
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+/* ---------- Garage ---------- */
+.garage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+.car { margin: 0; }
+.carImg {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 6%, var(--bg));
+}
+.carImg img { transform: scale(1.12); transition: transform 0.5s ease; }
+.car:hover .carImg img { transform: scale(1.22) translateX(3%); }
+.car figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule);
+}
+.car strong { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; }
+.car span { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.credit { font-size: 0.72rem; color: var(--muted); margin: 0.75rem 0 0; }
+
+/* Dark mode: the renders have a white background, so present them on light "studio" panels */
+[data-theme='dark'] .heroImg,
+[data-theme='dark'] .carImg { background: #ece7e1; }
+
+/* ---------- Closing ---------- */
+.closing {
+  margin: 3.5rem 0 1rem;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.closing p { max-width: 32rem; margin: 0; font-size: 0.92rem; color: var(--muted); }
+.closing b { color: var(--ink); font-weight: 500; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .heroCar { max-width: 24rem; width: 100%; margin: 0 auto; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { padding-left: 0; border-left: none; }
+  .stat:nth-child(n + 3) { border-top: 1px solid var(--rule); }
+  .roles, .garage { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; gap: 1.75rem; padding-left: 2rem; }
+  .timeline::before {
+    left: 0.45rem;
+    right: auto;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(to bottom, var(--accent), var(--rule));
+  }
+  .timeline li { padding-top: 0; }
+  .timeline li::before { left: -2rem; top: 0.1rem; }
+}
+@media (max-width: 600px) {
+  .statValue { font-size: 2.4rem; }
+  .quote { font-size: 1.2rem; }
+  .garage { grid-template-columns: 1fr; }
+}
