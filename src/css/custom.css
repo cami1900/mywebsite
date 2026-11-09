@@ -53,6 +53,14 @@ body { -webkit-font-smoothing: antialiased; }
 }
 .navbar__link { font-size: 0.9rem; }
 
+.navbar-icon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.navbar-icon-link svg { flex-shrink: 0; opacity: 0.8; transition: opacity 0.2s; }
+.navbar-icon-link:hover svg { opacity: 1; }
+
 .footer {
   background: var(--bg);
   border-top: 1px solid var(--rule);

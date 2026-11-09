@@ -36,8 +36,19 @@ const config = {
       title: 'Camilla Menon',             // CHANGE ME
       items: [
         { to: '/projects', label: 'Projects', position: 'left' },
-        { href: 'pathname:///files/CamillaMenon_CV.pdf', label: 'Download CV', position: 'left' },
-        { href: 'mailto:menoncamilla.2000@gmail.com', label: 'Email me', position: 'right' },
+        {
+          href: 'pathname:///files/CamillaMenon_CV.pdf',
+          download: 'CamillaMenon_CV.pdf',
+          position: 'right',
+          className: 'navbar-icon-link',
+          html: `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span>Download CV</span>`,
+        },
+        {
+          href: 'mailto:menoncamilla.2000@gmail.com',
+          position: 'right',
+          className: 'navbar-icon-link',
+          html: `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg><span>Email me</span>`,
+        },
       ],
     },
     footer: {

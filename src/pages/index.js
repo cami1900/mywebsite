@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './index.module.css';
 
 const CEFR = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -67,13 +65,6 @@ export default function Home() {
             manufacturing systems, now going deeper into materials science:
             how a material's structure and its process shape the final product.
           </p>
-          <nav className={styles.links}>
-            <Link to="/projects">Projects</Link>
-            <span aria-hidden="true">·</span>
-            <a href={useBaseUrl('/files/CamillaMenon_CV.pdf')} download>Download CV</a>
-            <span aria-hidden="true">·</span>
-            <a href="mailto:menoncamilla.2000@gmail.com">Email me</a>
-          </nav>
           </div>
         </section>
 
