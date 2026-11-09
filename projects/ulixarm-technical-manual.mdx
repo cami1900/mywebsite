@@ -1,0 +1,77 @@
+---
+sidebar_position: 0.5
+title: UlixArm Technical Manual & CE Conformity
+---
+
+import { ManualHero, ManualPages } from '@site/src/components/ManualPages';
+
+# UlixArm Technical Manual & CE Conformity
+
+**Scope:** risk assessment, CE conformity, technical writing · **Where:** Itaca Robotics, a robotics startup · **When:** 2026
+
+## What it is
+The **UlixArm Research Kit** is a 6-axis robot arm for research labs, sold with a gripper, a depth camera and an electrical panel. Before it could be sold in the EU it needed a risk assessment, a conformity route under the **Machinery Directive 2006/42/EC**, and an instruction manual. I did all three, and the result is an 88-page technical manual (*original instructions*).
+
+<ManualHero
+  cover="/img/ulixarm/cover.jpg"
+  alt="Cover of the UlixArm Research Kit Technical Manual"
+  stats={[
+    { value: '88', label: 'pages of original instructions' },
+    { value: '33', label: 'Annex I safety requirements met by the arm' },
+    { value: '11', label: 'requirements formally handed over to the integrator' },
+    { value: '19', label: 'harmonised and supporting standards applied' },
+  ]}
+/>
+
+## What I did
+- **Risk assessment (EN ISO 12100):** worked through every life phase, from transport and installation to operation, maintenance and decommissioning. I identified the mechanical, electrical and thermal hazards, using EN ISO 10218-1 Annex A as a checklist, and defined a protective measure for each one.
+- **Conformity route:** classified the kit as **partly completed machinery** and wrote the **Declaration of Incorporation** (Annex II 1.B). It lists the essential requirements the arm already meets and the ones the integrator of the final machine must cover.
+- **Safety concept:** documented the stop category 0 emergency stop with its self-latching restart, the mechanical end stops, and the software checks in the robot's API, and was clear about what each of them *cannot* do.
+- **Technical manual:** wrote the full manual: safety chapter with graded warnings (DANGER, WARNING, CAUTION), personnel qualifications, specifications, transport, installation, operation, maintenance and an appendix of component datasheets.
+
+## The interesting part: an arm with no brakes
+For research, the joints have to stay **backdrivable** (quasi-direct-drive motors), so the arm has no brakes. As a result, cutting the power, even with the emergency stop, lets the arm **fall under its own weight**. That can't be designed out without changing what the product is for, so it became a documented **residual risk**. It is reduced by a payload limit, a 90 °C temperature cut-off, a 0.2 rad command-step limit, and a required protective enclosure around the 840 mm workspace, and each item is assigned either to the manufacturer or to the integrator.
+
+## Inside the manual
+*Click a page to enlarge it.*
+
+<ManualPages
+  pages={[
+    {
+      src: '/img/ulixarm/declaration.jpg',
+      page: 3,
+      title: 'Declaration of Incorporation',
+      text: 'The legal core: the Annex I requirements that are met, the ones left to the integrator, and the standards applied.',
+    },
+    {
+      src: '/img/ulixarm/residual-risks.jpg',
+      page: 23,
+      title: 'Residual risks',
+      text: 'Every remaining hazard mapped to its life phase, with the manufacturer’s measure and the integrator’s.',
+    },
+    {
+      src: '/img/ulixarm/danger-warnings.jpg',
+      page: 16,
+      title: 'Hazard warnings',
+      text: 'Graded safety messages: the hazard, its consequence, and how to avoid it.',
+    },
+    {
+      src: '/img/ulixarm/protective-enclosure.jpg',
+      page: 35,
+      title: 'Protective enclosure',
+      text: 'The 840 mm robot workspace inside a 2 m safety envelope that the final machine must enclose.',
+    },
+    {
+      src: '/img/ulixarm/arm-overview.jpg',
+      page: 8,
+      title: 'Equipment overview',
+      text: 'The arm’s ten components, from the table mount to the wrist camera.',
+    },
+    {
+      src: '/img/ulixarm/dimensions.jpg',
+      page: 30,
+      title: 'Dimensions',
+      text: 'Joint names and link lengths, the basis for the workspace and safety distances.',
+    },
+  ]}
+/>
