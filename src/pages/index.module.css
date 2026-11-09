@@ -91,51 +91,63 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   position: relative;
+  padding-bottom: 1rem;
 }
 .path::before {
   content: '';
   position: absolute;
-  top: 0.32rem;
+  top: 0.45rem;
   left: 0;
   right: 0;
   height: 0;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--muted);
+  opacity: 0.45;
 }
 .path li {
   position: relative;
-  padding-top: 1.5rem;
+  padding-top: 2.1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 .path li::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 0.65rem;
-  height: 0.65rem;
+  width: 0.9rem;
+  height: 0.9rem;
   border-radius: 50%;
   background: var(--bg);
-  border: 1px solid var(--muted);
+  border: 1.5px solid var(--muted);
+  box-sizing: border-box;
 }
-.path li.now::before { background: var(--accent); border-color: var(--accent); }
-.place { font-family: var(--font-serif); font-size: 1.3rem; }
-.what { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+.path li.now::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.place {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  line-height: 1.05;
+}
+.what { font-size: 0.92rem; color: var(--muted); line-height: 1.45; }
 .now .place { font-style: italic; color: var(--accent); }
+.now .what { color: var(--ink); }
 
 /* Languages */
 .langs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 .lang {
   position: relative;
   overflow: hidden;
-  padding: 2rem 1.5rem 1.6rem;
+  padding: 1.2rem 1.1rem 1rem;
   border: 1px solid var(--rule);
   border-radius: 4px;
   background: var(--bg);
@@ -144,7 +156,7 @@
   animation-delay: calc(var(--i) * 0.12s);
 }
 .lang:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: var(--accent);
   box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.35);
 }
@@ -153,8 +165,8 @@
 .words {
   position: relative;
   display: block;
-  height: 3.6rem;
-  margin-bottom: 1.5rem;
+  height: 2.3rem;
+  margin-bottom: 0.8rem;
 }
 .word,
 .wordOn {
@@ -163,7 +175,7 @@
   top: 0;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(2.6rem, 5vw, 3.3rem);
+  font-size: clamp(1.7rem, 3vw, 2rem);
   line-height: 1.05;
   color: var(--ink);
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.2,1), filter 0.6s ease;
@@ -175,12 +187,12 @@
 .langName {
   position: relative;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.6rem;
 }
 
 /* CEFR scale */
@@ -191,7 +203,7 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 4px;
   padding: 0;
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.5rem;
 }
 .scale li {
   display: flex;
@@ -201,7 +213,7 @@
 }
 .scale li::before {
   content: '';
-  height: 6px;
+  height: 4px;
   border-radius: 1px;
   background: var(--rule);
 }
@@ -212,7 +224,7 @@
   animation-delay: calc(0.5s + var(--i) * 0.12s);
 }
 .scale span {
-  font-size: 0.62rem;
+  font-size: 0.56rem;
   letter-spacing: 0.08em;
   color: var(--muted);
   opacity: 0.6;
@@ -220,7 +232,7 @@
 .scale li.on span { color: var(--accent); opacity: 1; }
 .note {
   position: relative;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--ink);
   margin: 0;
 }
@@ -233,9 +245,9 @@
   .hero { grid-template-columns: 1fr; gap: 1.5rem; }
   .portrait { grid-column: 1; grid-row: 1; width: 11rem; height: 11rem; }
   .intro { grid-row: 2; }
-  .path { grid-template-columns: 1fr; gap: 1.2rem; }
-  .path::before { top: 0; bottom: 0; left: 0.32rem; right: auto; width: 0; height: auto; border-top: 0; border-left: 1px solid var(--rule); }
-  .path li { padding: 0 0 0 1.8rem; }
+  .path { grid-template-columns: 1fr; gap: 1.6rem; }
+  .path::before { top: 0; bottom: 0; left: 0.45rem; right: auto; width: 0; height: auto; border-top: 0; border-left: 1px solid var(--muted); }
+  .path li { padding: 0 0 0 2.2rem; }
   .langs { grid-template-columns: 1fr; }
 }
 
